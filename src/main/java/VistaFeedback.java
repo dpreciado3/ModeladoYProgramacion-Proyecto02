@@ -27,6 +27,7 @@ public class VistaFeedback extends javax.swing.JPanel {
 
         jTextArea1 = new javax.swing.JTextArea();
 
+        jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
 
