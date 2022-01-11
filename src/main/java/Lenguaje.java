@@ -8,16 +8,19 @@
  *
  * @author bbjbr
  */
-public abstract class Lenguaje{
+public  class Lenguaje{
         
-    private String nombre;
-    private int precio;
-
+    protected String nombre;
+    protected int precio;
+    
     public String getNombre() {
         return nombre;
     }
     
     public int getPrecio() {
         return precio;
+    }
+    public boolean equals(Lenguaje l){
+        return nombre.equals(l.getNombre());
     }
 }
