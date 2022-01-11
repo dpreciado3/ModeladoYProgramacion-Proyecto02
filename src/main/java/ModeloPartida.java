@@ -6,6 +6,11 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.ArrayList;
 
+/**
+ * Clase que funciona como el modelo de la partida de Software Dev Tycoon
+ * Contiene métodos que pueden ser utilizados por controladores para reflejar
+ * cambios en la vista.
+ */
 public class ModeloPartida implements Sujeto {
     private Nivel nivelActual;
     private Calendar calendario;
@@ -15,6 +20,10 @@ public class ModeloPartida implements Sujeto {
     private Empresa jugador;
     private ArrayList<ObservadorPartida> observadores;
     
+    /**
+     * Clase para la tarea que realizará el timer global de la partida, 
+     * en particular avanzar la fecha un día cada tres segundos.
+     */
     private class AvanzaDia extends TimerTask {
         public void run() {
             calendario.roll(Calendar.DATE, true);
@@ -22,6 +31,14 @@ public class ModeloPartida implements Sujeto {
         }
     }
     
+    /**
+     * Constructor para el modelo de la partida.
+     * Cada jugador empieza con $100 000 y el nombre por default es "Googlesoft",
+     * se empieza desde el primer nivel (Independiente). Se crean reseñas por
+     * cada posible calificación y se guardan en el HashMap. Por último
+     * se inicia el calendario en el día 1/1/2022 y se inicia el timer con 
+     * la tarea anteriormente mencionada.
+     */
     public ModeloPartida() {
         observadores = new ArrayList<>();
         jugador = new Empresa(100000, "Googlesoft");
