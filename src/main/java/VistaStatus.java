@@ -13,6 +13,10 @@ public class VistaStatus extends javax.swing.JPanel {
         nivel = "";
         dinero = "";
         nombre = "";
+        jTextArea1.setText("NOMBRE: " + nombre 
+                + "\nFECHA: " + fecha
+                + "\nDINERO: " + dinero
+                + "\nNIVEL: " + nivel);
     }
     
     public void actualizarStatus() {

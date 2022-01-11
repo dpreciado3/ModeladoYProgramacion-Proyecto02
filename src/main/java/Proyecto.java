@@ -16,8 +16,8 @@ public class Proyecto {
     private String nombreProyecto;
     private String descripcion;
     private int paga;
-    private LinkedList<Patron> patronesRequeridos; 
-    private LinkedList<Lenguaje> lenguajesRequeridos;
+    private LinkedList<Patron> patronesRequeridos = new LinkedList<>(); 
+    private LinkedList<Lenguaje> lenguajesRequeridos = new LinkedList<>();
     private Date fechaDeEntrega;
 
     public String getNombreCliente() {

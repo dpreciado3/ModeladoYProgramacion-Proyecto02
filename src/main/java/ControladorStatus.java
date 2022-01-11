@@ -9,6 +9,7 @@ public class ControladorStatus implements ObservadorPartida {
     public ControladorStatus(ModeloPartida modeloPartida, VistaStatus vistaStatus) {
         this.modeloPartida = modeloPartida;
         this.vistaStatus = vistaStatus;
+        fechaActual = modeloPartida.getCalendario().getTime();
     }
     
     @Override

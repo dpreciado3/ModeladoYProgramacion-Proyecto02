@@ -11,23 +11,23 @@ public class Patrones {
         patronesEstructurales = new LinkedList<>();
         patronesCreacion = new LinkedList<>();
         
-        patronesComportamiento.add(new Patron("Observer", 5));
-        patronesComportamiento.add(new Patron("Strategy", 3));
-        patronesComportamiento.add(new Patron("Iterator", 1));
-        patronesComportamiento.add(new Patron("Template", 4));
-        patronesComportamiento.add(new Patron("State", 10));
+        patronesComportamiento.add(new Observer());
+        patronesComportamiento.add(new Strategy());
+        patronesComportamiento.add(new IteratorPattern());
+        patronesComportamiento.add(new Template());
+        patronesComportamiento.add(new State());
         
-        patronesEstructurales.add(new Patron("Adapter", 3));
-        patronesEstructurales.add(new Patron("Proxy", 10));
-        patronesEstructurales.add(new Patron("Composite", 7));
-        patronesEstructurales.add(new Patron("Decorator", 3));
-        patronesEstructurales.add(new Patron("Facade", 5));
+        patronesEstructurales.add(new Adapter());
+        patronesEstructurales.add(new Proxy());
+        patronesEstructurales.add(new Composite());
+        patronesEstructurales.add(new Decorator());
+        patronesEstructurales.add(new Facade());
         
-        patronesCreacion.add(new Patron("Singleton", 7));
-        patronesCreacion.add(new Patron("Builder", 6));
-        patronesCreacion.add(new Patron("Prototype", 3));
-        patronesCreacion.add(new Patron("Abstract factory", 15));
-        patronesCreacion.add(new Patron("Factory", 10));
+        patronesCreacion.add(new Singleton());
+        patronesCreacion.add(new Builder());
+        patronesCreacion.add(new Prototype());
+        patronesCreacion.add(new AbstractFactory());
+        patronesCreacion.add(new Factory());
     }
     
     public Iterator getIteradorComportamiento(){

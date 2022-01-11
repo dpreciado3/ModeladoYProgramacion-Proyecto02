@@ -31,7 +31,7 @@ public class PequenaEmpresa  extends Nivel{
         patronesDisponibles.add(new Strategy());
         patronesDisponibles.add(new Template());
         patronesDisponibles.add(new Observer());
-        patronesDisponibles.add(new Iterator());
+        patronesDisponibles.add(new IteratorPattern());
         patronesDisponibles.add(new Adapter());
         patronesDisponibles.add(new Composite());
         patronesDisponibles.add(new Facade());

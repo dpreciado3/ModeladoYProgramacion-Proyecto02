@@ -1,11 +1,6 @@
-public class Patron {
-    private final String nombre;
-    private final int tiempoNecesario;
-    
-    public Patron(String nombre, int tiempoNecesario) {
-        this.nombre = nombre;
-        this.tiempoNecesario = tiempoNecesario;
-    }
+public abstract class Patron {
+    protected String nombre;
+    protected int tiempoNecesario;
 
     public String getNombre() {
         return nombre;
