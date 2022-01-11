@@ -24,32 +24,16 @@ public class Proyecto {
         return nombreCliente;
     }
 
-    public void agregaNombreCliente(String nombreCliente) {
-        this.nombreCliente = nombreCliente;
-    }
-
     public String getNombreProyecto() {
         return nombreProyecto;
-    }
-
-    public void agregaNombreProyecto(String nombreProyecto) {
-        this.nombreProyecto = nombreProyecto;
     }
 
     public String getDescripcion() {
         return descripcion;
     }
-
-    public void agregaDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
+    
     public int getPaga() {
         return paga;
-    }
-
-    public void agregaPaga(int paga) {
-        this.paga = paga;
     }
 
     public LinkedList<Patron> getPatronesRequeridos() {
@@ -62,6 +46,23 @@ public class Proyecto {
     
     public Date getFechaDeEntrega() {
         return fechaDeEntrega;
+    }
+
+    public void agregaNombreCliente(String nombreCliente) {
+        this.nombreCliente = nombreCliente;
+    }
+
+    public void agregaNombreProyecto(String nombreProyecto) {
+        this.nombreProyecto = nombreProyecto;
+    }
+
+    public void agregaDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+
+    public void agregaPaga(int paga) {
+        this.paga = paga;
     }
 
     public void agregaFechaDeEntrega(Date fechaDeEntrega) {
@@ -94,9 +95,11 @@ public class Proyecto {
                 "\nLenguaje(s) preferido(s): \n";
         for(Lenguaje l: lenguajesRequeridos)
             proyecto += "   -" + l.getNombre() + "\n";
+        proyecto += "Costo total de lenguajes: $" + obtenCostoLenguajes() + "\n";
         proyecto += "\nPatron(es) preferido(s): \n";
         for(Patron pt: patronesRequeridos)
             proyecto += "   -" + pt.getNombre() + "\n\n";
+        proyecto += "Tiempo total de patrones: $" + obtenTiempoPatrones() + "\n";
         return proyecto;
     }
     /*public int calificaPatrones(LinkedList<Patron> patronesPropuestos){

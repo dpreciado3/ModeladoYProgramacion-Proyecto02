@@ -57,7 +57,7 @@ public class ConstructorProyectos {
         proyectoC1.agregaLenguajesRequeridos(new JavaScript());
         proyectoC1.agregaPaga(50000000);
         proyectoC1.agregaFechaDeEntrega(calculaEntrega(54));
-        return proyectoPE1;
+        return proyectoC1;
     }
     private Date calculaEntrega(int dias){
         Date actual = new Date();
