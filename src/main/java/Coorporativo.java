@@ -47,6 +47,7 @@ public class Coorporativo  extends Nivel{
         patronesDisponibles.add(new AbstractFactory());
         patronesDisponibles.add(new Factory());
         costoOperacional = 10;
+        nombre = "Corporativo";
     }
     @Override
     public void cobrar(Empresa em) {

@@ -4,75 +4,18 @@
  * restante y nombre de la empresa del jugador.
  */
 public class VistaStatus extends javax.swing.JPanel {
-    private String fecha;
-    private String nivel;
-    private String dinero;
-    private String nombre;
 
     /**
      * Creates new form VistaStatus
      */
     public VistaStatus() {
         initComponents();
-        fecha = "";
-        nivel = "";
-        dinero = "";
-        nombre = "";
-        jTextArea1.setText("NOMBRE: " + nombre 
-                + "\nFECHA: " + fecha
-                + "\nDINERO: " + dinero
-                + "\nNIVEL: " + nivel);
     }
     
-    /**
-     * Actualiza el texto de la vista con los valores actuales de los atributos
-     * de clase.
-     */
-    public void actualizarStatus() {
-        jTextArea1.setText("NOMBRE: " + nombre 
-                + "\nFECHA: " + fecha
-                + "\nDINERO: " + dinero
-                + "\nNIVEL: " + nivel);
-    }
-
-    /**
-     * Actualiza la fecha y actualiza el texto de la vista para reflejar el cambio.
-     * @param fecha La nueva fecha.
-     */
-    public void setFecha(String fecha) {
-        this.fecha = fecha;
-        actualizarStatus();
-    }
-
-    /**
-     * Actualiza el nivel y actualiza el texto de la vista para reflejar el cambio.
-     * @param nivel El nuevo nivel del jugador.
-     */
-    public void setNivel(String nivel) {
-        this.nivel = nivel;
-        actualizarStatus();
-    }
-
-    /**
-     * Actualiza el dinero y actualiza el texto de la vista para reflejar el cambio.
-     * @param dinero La nueva cantidad de dinero del jugador.
-     */
-    public void setDinero(String dinero) {
-        this.dinero = dinero;
-        actualizarStatus();
-    }
-
-    /**
-     * Actualiza el nombre y actualiza el texto de la vista para reflejar el cambio.
-     * @param nombre El nuevo nombre de la empresa.
-     */
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-        actualizarStatus();
+    public void actualizarStatus(String nuevoStatus) {
+        jTextArea1.setText(nuevoStatus);
     }
     
-    
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

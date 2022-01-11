@@ -38,6 +38,7 @@ public class PequenaEmpresa  extends Nivel{
         patronesDisponibles.add(new Builder());
         patronesDisponibles.add(new Prototype());
         costoOperacional = 10;
+        nombre = "Pequeña empresa";
     }
     @Override
     public void cobrar(Empresa em) {

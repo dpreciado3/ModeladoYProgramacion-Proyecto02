@@ -16,6 +16,7 @@ public abstract class Nivel {
     protected LinkedList<Patron> patronesDisponibles;
     protected LinkedList<Lenguaje> lenguajesDisponibles;
     protected int costoOperacional;
+    protected String nombre;
 
     public LinkedList<Proyecto> getProyectos() {
         return proyectos;
@@ -58,5 +59,8 @@ public abstract class Nivel {
     }
     public abstract void cobrar(Empresa em);
 
- 
+    public String getNombre() {
+        return this.nombre;
+    }
+    
 }

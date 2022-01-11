@@ -25,6 +25,7 @@ public class Independiente extends Nivel{
         patronesDisponibles.add(new Strategy());
         patronesDisponibles.add(new Template());
         costoOperacional = 10;
+        nombre = "Independiente";
     }
     @Override
     public void cobrar(Empresa em) {

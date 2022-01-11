@@ -109,6 +109,16 @@ public class ModeloPartida implements Sujeto {
     public Empresa getJugador() {
         return jugador;
     }
+
+    public void setNivelActual(Nivel nivelActual) {
+        this.nivelActual = nivelActual;
+    }
+
+    public void setJugador(Empresa jugador) {
+        this.jugador = jugador;
+    }
+    
+    
     
     
     
