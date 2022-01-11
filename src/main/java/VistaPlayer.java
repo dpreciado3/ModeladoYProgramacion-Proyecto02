@@ -32,7 +32,10 @@ public class VistaPlayer extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-
+    public String leerTexto(){
+        return jTextField1.getText();
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
