@@ -2,6 +2,16 @@ public class Empresa {
     private int dinero;
     private String nombre;
 
+    public Empresa() {
+    }
+
+    public Empresa(int dinero, String nombre) {
+        this.dinero = dinero;
+        this.nombre = nombre;
+    }
+
+    
+    
     public int getDinero() {
         return dinero;
     }

@@ -1,11 +1,48 @@
 public class VistaStatus extends javax.swing.JPanel {
+    private String fecha;
+    private String nivel;
+    private String dinero;
+    private String nombre;
 
     /**
      * Creates new form VistaStatus
      */
     public VistaStatus() {
         initComponents();
+        fecha = "";
+        nivel = "";
+        dinero = "";
+        nombre = "";
     }
+    
+    public void actualizarStatus() {
+        jTextArea1.setText("NOMBRE: " + nombre 
+                + "\nFECHA: " + fecha
+                + "\nDINERO: " + dinero
+                + "\nNIVEL: " + nivel);
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+        actualizarStatus();
+    }
+
+    public void setNivel(String nivel) {
+        this.nivel = nivel;
+        actualizarStatus();
+    }
+
+    public void setDinero(String dinero) {
+        this.dinero = dinero;
+        actualizarStatus();
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+        actualizarStatus();
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.

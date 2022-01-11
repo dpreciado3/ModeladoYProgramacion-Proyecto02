@@ -51,6 +51,25 @@ public class VistaGeneral extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    // Idealmente estos métodos no serían necesarios porque las vistas serían
+    // parámetros de esta clase. Sin embargo, para aprovechar el diseñador
+    // de netbeans lo dejamos así. Son necesarios porque necesitamos que la
+    // instancia de cada vista que tiene esta clase sea la misma que tienen
+    // los controladores, y haciendo esto podemos asegurar eso desde el main.
+    
+    public VistaFeedback getVistaFeedback() {
+        return vistaFeedback1;
+    }
+
+    public VistaPlayer getVistaPlayer() {
+        return vistaPlayer1;
+    }
+
+    public VistaStatus getVistaStatus() {
+        return vistaStatus1;
+    }
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private VistaFeedback vistaFeedback1;
     private VistaPlayer vistaPlayer1;
