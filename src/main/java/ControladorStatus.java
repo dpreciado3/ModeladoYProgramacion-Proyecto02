@@ -1,10 +1,13 @@
+
 import java.util.Date;
 import java.text.SimpleDateFormat;
 
 /**
  * Clase que funciona como controlador para la VistaStatus con el ModeloPartida
+ * Se encarga de reportar cambios en la partida al jugador.
  */
 public class ControladorStatus implements ObservadorPartida {
+
     private ModeloPartida modeloPartida;
     private VistaStatus vistaStatus;
     private Date fechaActual;
@@ -14,6 +17,7 @@ public class ControladorStatus implements ObservadorPartida {
 
     /**
      * Constructor para el controlador de VistaStatus con ModeloPartida
+     *
      * @param modeloPartida el modelo de la partida del juego
      * @param vistaStatus la vista que administrará este controlador
      */
@@ -26,7 +30,7 @@ public class ControladorStatus implements ObservadorPartida {
         formatoFecha = new SimpleDateFormat("dd-MM-yyyy");
         actualizaVista();
     }
-    
+
     @Override
     public void actualizaCambios(Date fecha, Nivel nivel, Empresa jugador) {
         fechaActual = fecha;
@@ -35,12 +39,16 @@ public class ControladorStatus implements ObservadorPartida {
         // Refrescamos la vista con los datos nuevos
         actualizaVista();
     }
-    
+
+    /**
+     * Actualiza el texto de VistaStatus con los valores más recientes de los
+     * atributos de clase
+     */
     public void actualizaVista() {
         vistaStatus.actualizarStatus("NOMBRE: " + jugadorActual.getNombre()
                 + "\nFECHA: " + formatoFecha.format(fechaActual)
                 + "\nDINERO: $" + jugadorActual.getDinero()
                 + "\nNIVEL: " + nivelActual.getNombre());
     }
-    
+
 }

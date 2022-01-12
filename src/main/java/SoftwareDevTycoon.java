@@ -7,6 +7,7 @@ public class SoftwareDevTycoon {
         VistaGeneral vistaGeneral = new VistaGeneral();
         ModeloPartida modeloPartida = new ModeloPartida();
         ControladorStatus controladorStatus = new ControladorStatus(modeloPartida, vistaGeneral.getVistaStatus());
+        ControladorPlayer controladorPlayer = new ControladorPlayer(modeloPartida, vistaGeneral.getVistaPlayer());
         modeloPartida.registrarObservador(controladorStatus);
         
         /* Set the Nimbus look and feel */

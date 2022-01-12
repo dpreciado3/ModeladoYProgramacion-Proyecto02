@@ -1,6 +1,7 @@
+
 /**
  * Clase para la vista que contiene los datos más relevantes de la partida
- * actual de Software Dev Tycoon: fecha actual, nivel del jugador, dinero 
+ * actual de Software Dev Tycoon: fecha actual, nivel del jugador, dinero
  * restante y nombre de la empresa del jugador.
  */
 public class VistaStatus extends javax.swing.JPanel {
@@ -11,11 +12,11 @@ public class VistaStatus extends javax.swing.JPanel {
     public VistaStatus() {
         initComponents();
     }
-    
+
     public void actualizarStatus(String nuevoStatus) {
         jTextArea1.setText(nuevoStatus);
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

@@ -1,3 +1,4 @@
+
 import java.util.Iterator;
 import java.util.HashMap;
 import java.util.Date;
@@ -9,11 +10,12 @@ import java.util.ArrayList;
 /**
  * Clase que funciona como el modelo de la partida de Software Dev Tycoon
  * Contiene métodos que pueden ser utilizados por controladores para reflejar
- * cambios en la vista.
- * También funciona como sujeto que actualiza a observadores registrados mediante
- * un timer, los observadores en cuestión son los controladores del patrón MVC.
+ * cambios en la vista. También funciona como sujeto que actualiza a
+ * observadores registrados mediante un timer, los observadores en cuestión son
+ * los controladores del patrón MVC.
  */
 public class ModeloPartida implements Sujeto {
+
     private Nivel nivelActual;
     private Calendar calendario;
     private Timer timer;
@@ -21,12 +23,15 @@ public class ModeloPartida implements Sujeto {
     private HashMap<Integer, String> reseñas;
     private Empresa jugador;
     private ArrayList<ObservadorPartida> observadores;
-    
+    private String ultimaEntradaJugador;
+
     /**
-     * Clase para la tarea que realizará el timer global de la partida, 
-     * en particular avanzar la fecha un día y realizar el cobro cada tres segundos.
+     * Clase para la tarea que realizará el timer global de la partida, en
+     * particular avanzar la fecha un día y realizar el cobro cada tres
+     * segundos.
      */
     private class AvanzaDia extends TimerTask {
+
         public void run() {
             calendario.roll(Calendar.DATE, true);
             // Sustraemos al jugador el costo diario del nivel correspondiente
@@ -34,21 +39,21 @@ public class ModeloPartida implements Sujeto {
             notificaObservadores();
         }
     }
-    
+
     /**
-     * Constructor para el modelo de la partida.
-     * Cada jugador empieza con $100 000 y el nombre por default es "Googlesoft",
-     * se empieza desde el primer nivel (Independiente). Se crean reseñas por
-     * cada posible calificación y se guardan en el HashMap. Por último
-     * se inicia el calendario en el día 1/1/2022 y se inicia el timer con 
-     * la tarea anteriormente mencionada.
+     * Constructor para el modelo de la partida. Cada jugador empieza con $100
+     * 000 y el nombre por default es "Googlesoft", se empieza desde el primer
+     * nivel (Independiente). Se crean reseñas por cada posible calificación y
+     * se guardan en el HashMap. Por último se inicia el calendario en el día
+     * 1/1/2022 y se inicia el timer con la tarea anteriormente mencionada.
      */
     public ModeloPartida() {
+        ultimaEntradaJugador = "";
         observadores = new ArrayList<>();
         jugador = new Empresa(100000, "Googlesoft");
         nivelActual = new Independiente();
         patrones = new Patrones();
-        
+
         // Reseñas de los clientes
         reseñas = new HashMap<>();
         reseñas.put(0, "No pienso pagarte por eso, no me solucionaste nada.");
@@ -71,7 +76,7 @@ public class ModeloPartida implements Sujeto {
         reseñas.put(10, "Simplemente perfecto, muchas gracias. No cabe duda que "
                 + "el talento merece ser reconocido, y a tu empresa le sobra."
                 + "Seguiremos trabajando en un futuro.");
-        
+
         // Administración de tiempo
         calendario = Calendar.getInstance();
         calendario.clear();
@@ -79,21 +84,21 @@ public class ModeloPartida implements Sujeto {
         timer = new Timer(true);
         // Periodo en milisegundos, es decir, se repite cada 3s
         timer.scheduleAtFixedRate(new AvanzaDia(), 10000, 3000);
-        
+
     }
-    
+
     @Override
     public void notificaObservadores() {
         for (ObservadorPartida observador : observadores) {
             observador.actualizaCambios(calendario.getTime(), getNivelActual(), getJugador());
         }
     }
-    
+
     @Override
     public void registrarObservador(ObservadorPartida observador) {
         observadores.add(observador);
     }
-    
+
     @Override
     public void removerObservador(ObservadorPartida observador) {
         observadores.remove(observador);
@@ -122,9 +127,13 @@ public class ModeloPartida implements Sujeto {
     public void setJugador(Empresa jugador) {
         this.jugador = jugador;
     }
-    
-    
-    
-    
-    
+
+    public String getUltimaEntradaJugador() {
+        return ultimaEntradaJugador;
+    }
+
+    public void setUltimaEntradaJugador(String ultimaEntradaJugador) {
+        this.ultimaEntradaJugador = ultimaEntradaJugador;
+    }
+
 }

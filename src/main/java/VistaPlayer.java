@@ -1,3 +1,11 @@
+
+import javax.swing.Action;
+
+/**
+ * Clase para la vista que contiene un cuadro de texto donde el jugador puede
+ * ingresar elecciones.
+ *
+ */
 public class VistaPlayer extends javax.swing.JPanel {
 
     /**
@@ -18,8 +26,6 @@ public class VistaPlayer extends javax.swing.JPanel {
 
         jTextField1 = new javax.swing.JTextField();
 
-        jTextField1.setText("jTextField1");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -32,10 +38,32 @@ public class VistaPlayer extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    public String leerTexto(){
+    /**
+     * Lee el texto del cuadro de texto.
+     *
+     * @return El texto del cuadro de texto.
+     */
+    public String leerEntrada() {
         return jTextField1.getText();
     }
-    
+
+    /**
+     * Vacía el cuadro de texto.
+     */
+    public void limpiar() {
+        jTextField1.setText("");
+    }
+
+    /**
+     * Determina qué acción se realizará cuando el cuadro de texto detecte que
+     * el usuario presiona la tecla Intro.
+     *
+     * @param l La acción que se realizará.
+     */
+    public void añadeAccion(Action l) {
+        jTextField1.addActionListener(l);
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
