@@ -40,6 +40,9 @@ public class VistaFeedback extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    public void actualizaVista(String mensaje){
+        jTextArea1.setText(mensaje);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea jTextArea1;
