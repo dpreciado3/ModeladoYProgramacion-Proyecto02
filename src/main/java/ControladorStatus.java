@@ -28,8 +28,10 @@ public class ControladorStatus implements ObservadorPartida {
     }
     
     @Override
-    public void actualizaFecha(Date fecha) {
+    public void actualizaCambios(Date fecha, Nivel nivel, Empresa jugador) {
         fechaActual = fecha;
+        nivelActual = nivel;
+        jugadorActual = jugador;
         // Refrescamos la vista con los datos nuevos
         actualizaVista();
     }

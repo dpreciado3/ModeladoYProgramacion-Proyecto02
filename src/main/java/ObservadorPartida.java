@@ -6,9 +6,12 @@ import java.util.Date;
 public interface ObservadorPartida {
     
     /**
-     * Actualiza la fecha del observador con la fecha del ModeloPartida
+     * Actualiza los datos del observador con los cambios del ModeloPartida
      * @param fecha La fecha más reciente del ModeloPartida
+     * @param nivel El nivel más reciente del jugador
+     * @param jugador El estatus más reciente del jugador, lo que nos interesa
+     * en realidad es su cantidad de dinero restante
      */
-    public void actualizaFecha(Date fecha);
+    public void actualizaCambios(Date fecha, Nivel nivel, Empresa jugador);
     
 }

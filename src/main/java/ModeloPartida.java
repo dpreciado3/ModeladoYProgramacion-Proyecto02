@@ -10,6 +10,8 @@ import java.util.ArrayList;
  * Clase que funciona como el modelo de la partida de Software Dev Tycoon
  * Contiene métodos que pueden ser utilizados por controladores para reflejar
  * cambios en la vista.
+ * También funciona como sujeto que actualiza a observadores registrados mediante
+ * un timer, los observadores en cuestión son los controladores del patrón MVC.
  */
 public class ModeloPartida implements Sujeto {
     private Nivel nivelActual;
@@ -22,11 +24,13 @@ public class ModeloPartida implements Sujeto {
     
     /**
      * Clase para la tarea que realizará el timer global de la partida, 
-     * en particular avanzar la fecha un día cada tres segundos.
+     * en particular avanzar la fecha un día y realizar el cobro cada tres segundos.
      */
     private class AvanzaDia extends TimerTask {
         public void run() {
             calendario.roll(Calendar.DATE, true);
+            // Sustraemos al jugador el costo diario del nivel correspondiente
+            jugador.setDinero(jugador.getDinero() - nivelActual.getCostoOperacional());
             notificaObservadores();
         }
     }
@@ -80,7 +84,7 @@ public class ModeloPartida implements Sujeto {
     @Override
     public void notificaObservadores() {
         for (ObservadorPartida observador : observadores) {
-            observador.actualizaFecha(calendario.getTime());
+            observador.actualizaCambios(calendario.getTime(), getNivelActual(), getJugador());
         }
     }
     
