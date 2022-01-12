@@ -116,7 +116,7 @@ public class ModeloPartida implements Sujeto {
         double puntajePorPatron;
         puntajePorPatron = porcentajePatrones / ((double) proyecto.getPatronesRequeridos().size());
         double puntajePatrones;
-        double patronesCorrectos = cuentaCorrectos(proyecto.getPatronesRequeridos(), patronesElegidos);
+        double patronesCorrectos = (double) cuentaCorrectos(proyecto.getPatronesRequeridos(), patronesElegidos);
         puntajePatrones = patronesCorrectos*puntajePorPatron;
         calificacion += (int) Math.round(puntajePatrones);
         
