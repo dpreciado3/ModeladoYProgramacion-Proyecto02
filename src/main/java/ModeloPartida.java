@@ -34,7 +34,7 @@ public class ModeloPartida implements Sujeto {
     private class AvanzaDia extends TimerTask {
 
         public void run() {
-            calendario.roll(Calendar.DATE, true);
+            calendario.add(Calendar.DATE, 1);
             // Sustraemos al jugador el costo diario del nivel correspondiente
             jugador.setDinero(jugador.getDinero() - nivelActual.getCostoOperacional());
             notificaObservadores();
@@ -84,7 +84,7 @@ public class ModeloPartida implements Sujeto {
         calendario.set(2022, 0, 1);
         timer = new Timer(true);
         // Periodo en milisegundos, es decir, se repite cada 3s
-        timer.scheduleAtFixedRate(new AvanzaDia(), 10000, 3000);
+        timer.scheduleAtFixedRate(new AvanzaDia(), 5000, 3000);
 
     }
 
