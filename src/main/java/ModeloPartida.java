@@ -74,10 +74,11 @@ public class ModeloPartida implements Sujeto {
         
         // Administración de tiempo
         calendario = Calendar.getInstance();
-        calendario.set(2022, 1, 1);
+        calendario.clear();
+        calendario.set(2022, 0, 1);
         timer = new Timer(true);
         // Periodo en milisegundos, es decir, se repite cada 3s
-        timer.scheduleAtFixedRate(new AvanzaDia(), 0, 3000);
+        timer.scheduleAtFixedRate(new AvanzaDia(), 10000, 3000);
         
     }
     
