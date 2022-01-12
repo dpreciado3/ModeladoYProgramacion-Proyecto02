@@ -20,7 +20,12 @@ public  class Lenguaje{
     public int getPrecio() {
         return precio;
     }
-    public boolean equals(Lenguaje l){
+    
+    @Override
+    public boolean equals(Object o){
+        if (!(o instanceof Lenguaje))
+            return false;
+        Lenguaje l = (Lenguaje) o;
         return nombre.equals(l.getNombre());
     }
 }
