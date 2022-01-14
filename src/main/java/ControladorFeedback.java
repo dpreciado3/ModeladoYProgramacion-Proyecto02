@@ -69,8 +69,6 @@ public class ControladorFeedback implements ObservadorPartida {
                 proyectoActual = null;
                 lenguajesElegidos = new LinkedList<Lenguaje>();  
                 patronesElegidos = new LinkedList<Patron>(); 
-                agregadoPatrones = new boolean[modeloPartida.getNivelActual().getPatronesDisponibles().size()];
-                agregadoLenguajes = new boolean[modeloPartida.getNivelActual().getLenguajesDisponibles().size()];
                 //opcionUsuario = -2;
                 vistaFeedback.actualizaVista("Listo para emprender?" + daProyectos() + "\n \n Presione 0 para reiniciar el juego");
                 siguiente = 10;
@@ -209,12 +207,12 @@ public class ControladorFeedback implements ObservadorPartida {
     /**
      * Actualiza el nivel del usuario con base a las condiciones actuales del 
      * juego
-     * @return nivelActual el ahora nivelNuevo del juego
+     * @return entero que indica como es el nuevo nivel respecto el anterior
      */  
     private int verificaNivel(){
-        Nivel nivelNuevo = modeloPartida.getNivelActual();
-        if(nivelNuevo.getMaximo()< modeloPartida.getJugador().getDinero()){
-            switch(nivelNuevo.getNombre())   {
+        Nivel nivelActual = modeloPartida.getNivelActual();
+        if(nivelActual.getMaximo()< modeloPartida.getJugador().getDinero()){
+            switch(nivelActual.getNombre())   {
                 //Cambio de nivel y se sigue jugando
                 case "Independiente":
                     modeloPartida.setNivelActual(new PequenaEmpresa());
@@ -235,7 +233,9 @@ public class ControladorFeedback implements ObservadorPartida {
      * Regresa los proyectos disponibles para el nivel actual
      * @return proyectos los proyectos disponibles para el nivel actual
      */  
-    private String daProyectos(){
+    private String daProyectos(){                
+        agregadoLenguajes = new boolean[modeloPartida.getNivelActual().getLenguajesDisponibles().size()];
+        agregadoPatrones = new boolean[modeloPartida.getNivelActual().getPatronesDisponibles().size()];
         String proyectos = "\nIngresa el número del proyecto que desees desarrollar: ";
         LinkedList<Proyecto> proyectosDisponibles = modeloPartida.getNivelActual().getProyectos();
         int i=1;
