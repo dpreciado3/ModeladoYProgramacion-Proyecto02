@@ -1,26 +1,35 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
-
 /**
- *
- * @author bbjbr
+ * Clase que representa los lenguajes para los proyectos.
  */
-public  class Lenguaje{
+/**
+ * Clase que representa los lenguajes para los proyectos, 
+ */
+public class Lenguaje{
         
     protected String nombre;
     protected int precio;
     
+    /**
+     * Regresa el nombre del lenguaje
+     * @return el nombre del lenguaje
+     */    
     public String getNombre() {
         return nombre;
     }
     
+    /**
+     * Regresa el precio del lenuaje
+     * @return el precio del lenuaje
+     */
     public int getPrecio() {
         return precio;
     }
     
+    /**
+     * Compara dos lenguajes de acuerdo con su nombre.
+     * @param o El lenguaje a comparar.
+     * @return true si los lenguajes son el mismo, false en otro caso.
+     */
     @Override
     public boolean equals(Object o){
         if (!(o instanceof Lenguaje))

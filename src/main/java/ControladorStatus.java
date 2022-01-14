@@ -32,10 +32,15 @@ public class ControladorStatus implements ObservadorPartida {
     }
 
     @Override
-    public void actualizaCambios(Date fecha, Nivel nivel, Empresa jugador) {
-        fechaActual = fecha;
+    public void actualizaCambios() {
+       /* fechaActual = fecha;
         nivelActual = nivel;
         jugadorActual = jugador;
+        // Refrescamos la vista con los datos nuevos
+        actualizaVista();*/
+        fechaActual = modeloPartida.getCalendario().getTime();
+        nivelActual = modeloPartida.getNivelActual();
+        jugadorActual = modeloPartida.getJugador();
         // Refrescamos la vista con los datos nuevos
         actualizaVista();
     }

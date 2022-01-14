@@ -1,18 +1,14 @@
-
 import java.util.LinkedList;
-
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
 
 /**
  *
- * @author bbjbr
+ * Clase que representa al nivel Independiente
  */
 public class Independiente extends Nivel{
     
+    /*
+    * Constructor de la clase Independiente 
+    */
     public Independiente(){
         proyectos = new LinkedList<Proyecto>();
         constructorProyectos = new ConstructorProyectos();
@@ -24,12 +20,12 @@ public class Independiente extends Nivel{
         lenguajesDisponibles.add(new JavaScript());
         patronesDisponibles.add(new Strategy());
         patronesDisponibles.add(new Template());
-        costoOperacional = 10;
         nombre = "Independiente";
+        maximo = 20000;
     }
     @Override
     public void cobrar(Empresa em) {
-        em.setDinero(em.getDinero()+10);
+        em.setDinero(em.getDinero()-10);
     }
     
 }

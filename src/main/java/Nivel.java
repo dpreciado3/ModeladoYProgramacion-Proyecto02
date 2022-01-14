@@ -1,66 +1,73 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
-
 import java.util.LinkedList;
 
 /**
  *
- * @author bbjbr
+ * Clase abstracta nivel, sirve para poder cambiar las acciones a realizar en 
+ * cada nuvel según el juego avanza, es abstracta pues para el método cobrar se
+ * busca que para implementaciones futuras se realizen distintos ajustes según 
+ * el tiempo.
  */
 public abstract class Nivel {
     protected LinkedList<Proyecto> proyectos;
     protected ConstructorProyectos constructorProyectos;
     protected LinkedList<Patron> patronesDisponibles;
     protected LinkedList<Lenguaje> lenguajesDisponibles;
-    protected int costoOperacional;
     protected String nombre;
+    protected int maximo;
 
+    
+    /**
+     * Regresa el maximo del nivel
+     * @return el maximo del nivel
+     */
+    public int getMaximo() {
+        return maximo;
+    }
+    
+    /**
+     * Regresa los proyectos del nivel
+     * @return los proyectos del nivel
+     */
     public LinkedList<Proyecto> getProyectos() {
         return proyectos;
     }
-
-    public void setProyectos(LinkedList<Proyecto> proyectos) {
-        this.proyectos = proyectos;
-    }
-
+    
+    /**
+     * Regresa el constructor de proyectos del nivel
+     * @return el constructor de proyectos del nivel
+     */
     public ConstructorProyectos getConstructorProyectos() {
         return constructorProyectos;
     }
-
-    public void setConstructorProyectos(ConstructorProyectos constructorProyectos) {
-        this.constructorProyectos = constructorProyectos;
-    }
-
+    
+    /**
+     * Regresa los patrones disponibles del nivel
+     * @return los patrones disponibles del nivel
+     */
     public LinkedList<Patron> getPatronesDisponibles() {
         return patronesDisponibles;
     }
-
-    public void setPatronesDisponibles(LinkedList<Patron> patronesDisponibles) {
-        this.patronesDisponibles = patronesDisponibles;
-    }
-
+    
+    /**
+     * Regresa los lenguajes disponibles del nivel
+     * @return los lenguajes disponibles del nivel
+     */
     public LinkedList<Lenguaje> getLenguajesDisponibles() {
         return lenguajesDisponibles;
     }
-
-    public void setLenguajesDisponibles(LinkedList<Lenguaje> lenguajesDisponibles) {
-        this.lenguajesDisponibles = lenguajesDisponibles;
-    }
-
-    public int getCostoOperacional() {
-        return costoOperacional;
-    }
-
-    public void setCostoOperacional(int costoOperacional) {
-        this.costoOperacional = costoOperacional;
-    }
-    public abstract void cobrar(Empresa em);
-
+    
+    /**
+     * Regresa el nombre del nivel
+     * @return el nombre del nivel
+     */
     public String getNombre() {
         return this.nombre;
     }
+    
+    /**
+    * Le cobra a la empresa según el nivel en turno
+    * @param em la empresa a la que se le cobrará
+    */
+    public abstract void cobrar(Empresa em);
     
 }

@@ -1,18 +1,14 @@
-
 import java.util.LinkedList;
-
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
 
 /**
  *
- * @author bbjbr
+ * Clase que representa al nivel Pequeña Empresa
  */
 public class PequenaEmpresa  extends Nivel{
     
+    /*
+    * Constructor de la clase Pequeña Empresa 
+    */
     public PequenaEmpresa(){
         proyectos = new LinkedList<Proyecto>();
         constructorProyectos = new ConstructorProyectos();
@@ -37,12 +33,11 @@ public class PequenaEmpresa  extends Nivel{
         patronesDisponibles.add(new Facade());
         patronesDisponibles.add(new Builder());
         patronesDisponibles.add(new Prototype());
-        costoOperacional = 10;
         nombre = "Pequeña empresa";
     }
     @Override
     public void cobrar(Empresa em) {
-        em.setDinero(em.getDinero()+20);
+        em.setDinero(em.getDinero()-20);
     }
     
 }

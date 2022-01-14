@@ -6,11 +6,19 @@
 public abstract class Patron {
     protected String nombre;
     protected int tiempoNecesario;
-
+    
+    /**
+     * Regresa el nombre del patronb
+     * @return el nombre del patronb
+     */   
     public String getNombre() {
         return nombre;
     }
-
+    
+    /**
+     * Regresa el tiempoNecesario del patronb
+     * @return el tiempoNecesario del patronb
+     */   
     public int getTiempoNecesario() {
         return tiempoNecesario;
     }

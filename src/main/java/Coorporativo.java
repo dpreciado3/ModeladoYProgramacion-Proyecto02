@@ -1,18 +1,14 @@
-
 import java.util.LinkedList;
-
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
 
 /**
  *
- * @author bbjbr
+ * Clase que representa al nivel Coorporativo
  */
 public class Coorporativo  extends Nivel{
     
+    /**
+    * Constructor de la clase Coorporativo 
+    */
     public Coorporativo(){
         proyectos = new LinkedList<Proyecto>();
         constructorProyectos = new ConstructorProyectos();
@@ -46,12 +42,12 @@ public class Coorporativo  extends Nivel{
         patronesDisponibles.add(new Singleton());
         patronesDisponibles.add(new AbstractFactory());
         patronesDisponibles.add(new Factory());
-        costoOperacional = 10;
         nombre = "Corporativo";
     }
+    
     @Override
     public void cobrar(Empresa em) {
-        em.setDinero(em.getDinero()+30);
+        em.setDinero(em.getDinero()-30);
     }
     
 }

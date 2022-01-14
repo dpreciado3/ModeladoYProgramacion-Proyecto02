@@ -7,7 +7,7 @@
 public class VistaStatus extends javax.swing.JPanel {
 
     /**
-     * Creates new form VistaStatus
+     * Constructor de la clase VistaStatus
      */
     public VistaStatus() {
         initComponents();

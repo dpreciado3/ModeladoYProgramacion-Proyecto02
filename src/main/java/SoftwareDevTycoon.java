@@ -7,11 +7,11 @@ public class SoftwareDevTycoon {
         VistaGeneral vistaGeneral = new VistaGeneral();
         ModeloPartida modeloPartida = new ModeloPartida();
         ControladorStatus controladorStatus = new ControladorStatus(modeloPartida, vistaGeneral.getVistaStatus());
-        ControladorPlayer controladorPlayer = new ControladorPlayer(modeloPartida, vistaGeneral.getVistaPlayer());
         ControladorFeedback controladorFeedback = new ControladorFeedback(modeloPartida, vistaGeneral.getVistaFeedback());
+        ControladorPlayer controladorPlayer = new ControladorPlayer(modeloPartida, vistaGeneral.getVistaPlayer(),controladorFeedback);
         modeloPartida.registrarObservador(controladorStatus);
         modeloPartida.registrarObservador(controladorFeedback);
-        
+        controladorFeedback.setPlayer(controladorPlayer);
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.

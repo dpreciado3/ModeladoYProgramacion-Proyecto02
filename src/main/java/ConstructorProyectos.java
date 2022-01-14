@@ -1,17 +1,16 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
-
 import java.util.Calendar;
 import java.util.Date;
 
 /**
- *
- * @author bbjbr
+ * Clase que controla la creación de nuevos proyectos
  */
 public class ConstructorProyectos {
+    
+    /**
+     * Crea un proyecto con las caracteristicas para poder ser desarrollado 
+     * estando en el nivel Independiente
+     * @return proyectoI1 el Proyecto para el nivel Independiente
+     */
     public Proyecto construyeProyectoIdependiente1(){
         Proyecto proyectoI1 = new Proyecto();
         proyectoI1.agregaNombreProyecto("Clon de Mario Kart");
@@ -23,6 +22,12 @@ public class ConstructorProyectos {
         proyectoI1.agregaFechaDeEntrega(calculaEntrega(5));
         return proyectoI1;
     }
+    
+    /**
+     * Crea un proyecto con las caracteristicas para poder ser desarrollado 
+     * estando en el nivel Pequeña Empresa
+     * @return proyectoPE1 el Proyecto para el nivel Pequeña Empresa
+     */
     public Proyecto construyeProyectoPequenaEmpresa1(){
         Proyecto proyectoPE1 = new Proyecto();
         proyectoPE1.agregaNombreProyecto("Base de datos de empleados");
@@ -38,6 +43,12 @@ public class ConstructorProyectos {
         proyectoPE1.agregaFechaDeEntrega(calculaEntrega(14));
         return proyectoPE1;
     }
+    
+    /**
+     * Crea un proyecto con las caracteristicas para poder ser desarrollado 
+     * estando en el nivel Coorporativo
+     * @return proyectoC1 el Proyecto para el nivel Coorporativo
+     */
     public Proyecto construyeProyectoCorporativo1(){
         Proyecto proyectoC1 = new Proyecto();
         proyectoC1.agregaNombreProyecto("Nueva criptomoneda del Banco de México");
@@ -59,6 +70,13 @@ public class ConstructorProyectos {
         proyectoC1.agregaFechaDeEntrega(calculaEntrega(54));
         return proyectoC1;
     }
+    
+    /**
+     * Calcula la fecha de entrega de un proyecto con base al número de días que
+     * se le indique
+     * @param dias el número de días que tarda en llevarse a cabo el proyecto
+     * @return fecha de entrega del proyecto
+     */
     private Date calculaEntrega(int dias){
         Date actual = new Date();
         Calendar c = Calendar.getInstance();

@@ -1,15 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
 /**
- *
- * @author bbjbr
+ * Clase que representa al lenguaje de diseño PHP
  */
 public class PHP extends Lenguaje{
     public PHP(){
-        nombre = "C#";
+        nombre = "PHP";
         precio = 8000;
     }
 }

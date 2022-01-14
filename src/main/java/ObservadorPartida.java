@@ -12,6 +12,6 @@ public interface ObservadorPartida {
      * @param jugador El estatus más reciente del jugador, lo que nos interesa
      * en realidad es su cantidad de dinero restante
      */
-    public void actualizaCambios(Date fecha, Nivel nivel, Empresa jugador);
+    public void actualizaCambios();
     
 }

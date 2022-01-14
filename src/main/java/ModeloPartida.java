@@ -1,7 +1,5 @@
 
-import java.util.Iterator;
 import java.util.HashMap;
-import java.util.Date;
 import java.util.Calendar;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -23,9 +21,6 @@ public class ModeloPartida implements Sujeto {
     private HashMap<Integer, String> reseñas;
     private Empresa jugador;
     private LinkedList<ObservadorPartida> observadores;
-    private String ultimaEntradaJugador;
-    private Proyecto proyectoActual;
-
     /**
      * Clase para la tarea que realizará el timer global de la partida, en
      * particular avanzar la fecha un día y realizar el cobro cada tres
@@ -36,11 +31,11 @@ public class ModeloPartida implements Sujeto {
         public void run() {
             calendario.add(Calendar.DATE, 1);
             // Sustraemos al jugador el costo diario del nivel correspondiente
-            jugador.setDinero(jugador.getDinero() - nivelActual.getCostoOperacional());
+            nivelActual.cobrar(jugador);
             notificaObservadores();
         }
     }
-
+    
     /**
      * Constructor para el modelo de la partida. Cada jugador empieza con $100
      * 000 y el nombre por default es "Googlesoft", se empieza desde el primer
@@ -49,7 +44,6 @@ public class ModeloPartida implements Sujeto {
      * 1/1/2022 y se inicia el timer con la tarea anteriormente mencionada.
      */
     public ModeloPartida() {
-        ultimaEntradaJugador = "";
         observadores = new LinkedList<>();
         jugador = new Empresa(100000, "Googlesoft");
         nivelActual = new Independiente();
@@ -86,6 +80,20 @@ public class ModeloPartida implements Sujeto {
         // Periodo en milisegundos, es decir, se repite cada 3s
         timer.scheduleAtFixedRate(new AvanzaDia(), 5000, 3000);
 
+    }
+    /**
+    * Regresa al ModeloPartida a sus condiciones iniciales
+    */
+    public void reiniciar() {
+        jugador = new Empresa(100000, "Googlesoft");
+        nivelActual = new Independiente();
+        
+        // Administración de tiempo
+        calendario = Calendar.getInstance();
+        calendario.clear();
+        calendario.set(2022, 0, 1);
+        timer = new Timer(true);       
+        
     }
 
     /**
@@ -152,10 +160,9 @@ public class ModeloPartida implements Sujeto {
     @Override
     public void notificaObservadores() {
         for (ObservadorPartida observador : observadores) {
-            observador.actualizaCambios(calendario.getTime(), getNivelActual(), getJugador());
+            observador.actualizaCambios();
         }
     }
-
     @Override
     public void registrarObservador(ObservadorPartida observador) {
         observadores.add(observador);
@@ -188,24 +195,8 @@ public class ModeloPartida implements Sujeto {
 
     public void setJugador(Empresa jugador) {
         this.jugador = jugador;
+    }    
+    public Patrones getPatrones() {
+        return patrones;
     }
-
-    public String getUltimaEntradaJugador() {
-        return ultimaEntradaJugador;
-    }
-
-    public void setUltimaEntradaJugador(String ultimaEntradaJugador) {
-        this.ultimaEntradaJugador = ultimaEntradaJugador;
-    }
-
-    public Proyecto getProyectoActual() {
-        return proyectoActual;
-    }
-
-    public void setProyectoActual(Proyecto proyectoActual) {
-        this.proyectoActual = proyectoActual;
-    }
-    
-    
-
 }

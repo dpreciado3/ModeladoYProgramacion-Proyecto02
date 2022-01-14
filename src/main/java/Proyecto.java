@@ -87,7 +87,26 @@ public class Proyecto {
             tiempo += pt.getTiempoNecesario();
         return tiempo;
     }
-    public String mostrar(){
+    @Override
+    public String toString(){
+        return nombreProyecto + 
+                "\nCliente : " + nombreCliente +
+                "\nDescripción: "+ descripcion +
+                "\n Pago: " + paga + " pesos";
+    }
+    public String respuestaEsperada(){
+        String respuesta = "Patron(es) preferido(s):\n";
+        for(Lenguaje l: lenguajesRequeridos)
+            respuesta += "   -" + l.getNombre() + "\n";
+        respuesta += "Costo total de lenguajes: " + obtenCostoLenguajes() + " pesos\n";
+        respuesta += "\nPatron(es) preferido(s): \n";
+        for(Patron pt: patronesRequeridos)
+            respuesta += "   -" + pt.getNombre() + "\n\n";
+        respuesta += "Tiempo total de patrones: " + obtenTiempoPatrones() + " días\n";
+        return respuesta;
+    }
+    /*
+    public String toString(){
         String proyecto = nombreProyecto + 
                 "\nCliente : " + nombreCliente +
                 "\nDescripción: "+ descripcion +
@@ -102,7 +121,7 @@ public class Proyecto {
         proyecto += "Tiempo total de patrones: $" + obtenTiempoPatrones() + "\n";
         return proyecto;
     }
-    /*public int calificaPatrones(LinkedList<Patron> patronesPropuestos){
+    public int calificaPatrones(LinkedList<Patron> patronesPropuestos){
         int califPatrones = 0;
         Collections.sort(patronesPropuestos);//falta agregar comparator
         for(int i=0; i< patronesRequeridos.size(); i++)
