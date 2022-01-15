@@ -22,6 +22,7 @@ public class ControladorPlayer{
      *
      * @param modeloPartida el modelo de la partida del juego.
      * @param vistaPlayer la vista que administrará este controlador.
+     * @param controladorFeedback el controlador de la parte feedback del programa
      */
     public ControladorPlayer(ModeloPartida modeloPartida, VistaPlayer vistaPlayer, ControladorFeedback controladorFeedback) {
         this.modeloPartida = modeloPartida;
