@@ -94,67 +94,6 @@ public class ModeloPartida implements Sujeto {
         calendario.set(2022, 0, 1);
         timer = new Timer(true);       
         
-    }
-
-    /**
-     * Evalua el proyecto construido por el jugador de acuerdo a los patrones
-     * elegidos, los lenguajes elegidos y la cercanía a la fecha de entrega.
-     * La elección de patrones es el 50% de la evaluación y la elección de 
-     * lenguajes el otro 50%. Si se pasa de la fecha de entrega, la calificación
-     * siempre es 0.
-     *
-     * @param proyecto El proyecto que el jugador debía completar.
-     * @param patronesElegidos Los patrones que el jugador escogió.
-     * @param lenguajesElegidos Los lenguajes que el jugador escogió.
-     * @return La calificación del desempeño del jugador en el proyecto, que es
-     * un número entero del 0 al 10.
-     */
-    public int evaluaProyectoJugador(Proyecto proyecto,
-            LinkedList<Patron> patronesElegidos,
-            LinkedList<Lenguaje> lenguajesElegidos) {
-        int calificacion = 0;
-        double porcentajePatrones = 5.0;
-        double porcentajeLenguajes = 5.0;
-        
-        // Si se pasó de la fecha de entrega, la calificación es 0
-        if (calendario.getTime().after(proyecto.getFechaDeEntrega()))
-            return calificacion;
-        
-        // Puntaje de patrones
-        double puntajePorPatron;
-        puntajePorPatron = porcentajePatrones / ((double) proyecto.getPatronesRequeridos().size());
-        double puntajePatrones;
-        double patronesCorrectos = (double) cuentaCorrectos(proyecto.getPatronesRequeridos(), patronesElegidos);
-        puntajePatrones = patronesCorrectos*puntajePorPatron;
-        calificacion += (int) Math.round(puntajePatrones);
-        
-        // Puntaje de lenguajes
-        double puntajePorLenguaje;
-        puntajePorLenguaje = porcentajeLenguajes / ((double) proyecto.getLenguajesRequeridos().size());
-        double puntajeLenguajes;
-        double lenguajesCorrectos = (double) cuentaCorrectos(proyecto.getLenguajesRequeridos(), lenguajesElegidos);
-        puntajeLenguajes = lenguajesCorrectos*puntajePorLenguaje;
-        calificacion += (int) Math.round(puntajeLenguajes);
-        
-        return calificacion;
-    }
-    
-    /**
-     * A partir de la primera lista, determina cuántos elementos de la primera 
-     * lista aparecen en la segunda lista.
-     * @param <T> El tipo de elementos de la LinkedList.
-     * @param l1 La lista cuyos elementos se desea contar en otra.
-     * @param l2 La lista en donde se busca contar las apariciones de elementos
-     * de la primer lista.
-     * @return El número de elementos de la primera lista en la segunda lista.
-     */
-    private <T> int cuentaCorrectos(LinkedList<T> l1, LinkedList<T> l2) {
-        int correctos = 0;
-        for (T elemento : l1) {
-            if (l2.contains(elemento))
-                ++correctos;
-        }
-        return correctos;
     } 
 
     @Override
