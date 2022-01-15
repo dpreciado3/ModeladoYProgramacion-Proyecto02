@@ -91,12 +91,12 @@ public class ControladorFeedback implements ObservadorPartida {
                         "\n \n Presione 0 para reiniciar el juego" +
                         "\n \n"
                         + "     ██▄▄▄▄▄▄▄▄▄   \n" +
-"    ▒▒▒▒▒▒▒▒▒▒▓██  \n" +
-"   ▀▀▒▒▒▀▀▒▒▒▓▓▓▓█ \n" +
-" ▄▄▄▒▒░    ░░▒▒▒▓█ \n" +
-" ▀▀▀▒▄▄▄   ░░▒▒▒▓█ \n" +
-"   █▄░   ░░▒▒▒▒▓▓█ \n" +
-"    ▀█▄▄▄▄▄▄▄▄▄▀▀  " );
+                        "    ▒▒▒▒▒▒▒▒▒▒▓██  \n" +
+                        "   ▀▀▒▒▒▀▀▒▒▒▓▓▓▓█ \n" +
+                        " ▄▄▄▒▒░    ░░▒▒▒▓█ \n" +
+                        " ▀▀▀▒▄▄▄   ░░▒▒▒▓█ \n" +
+                        "   █▄░   ░░▒▒▒▒▓▓█ \n" +
+                        "    ▀█▄▄▄▄▄▄▄▄▄▀▀  " );
                 siguiente = 0;
                 break;
             //perder el juego
@@ -311,14 +311,14 @@ public class ControladorFeedback implements ObservadorPartida {
         double[] calificacionParcialPatrones = cuentaPatronesCorrectos(proyectoActual.getPatronesRequeridos(),patronesElegidos);    
         // Puntaje de patrones
         double puntajePorPatron;
-        puntajePorPatron = porcentajePatrones / ((double) proyectoActual.getPatronesRequeridos().size());
+        puntajePorPatron = porcentajePatrones / ((double) patronesElegidos.size());
         double puntajePatrones;
         puntajePatrones = calificacionParcialPatrones[3]*puntajePorPatron;
         // Calificación reprobatoria
         if (puntajePatrones < 0)
             puntajePatrones = 0;
         calificacion += (int) Math.round(puntajePatrones);
-        evaluacion +="\nCalificación patrones: " + (int) Math.round(puntajePatrones);
+        evaluacion +="Calificación patrones: " + (int) Math.round(puntajePatrones);
         evaluacion +="\n    Patrones correctos: " + calificacionParcialPatrones[0];
         evaluacion +="\n    Patrones parcialmente correctos: " + calificacionParcialPatrones[1]; 
         evaluacion +="\n    Patrones incorrectos: " + calificacionParcialPatrones[2];        
@@ -339,8 +339,9 @@ public class ControladorFeedback implements ObservadorPartida {
         if(calificacion > 5)
             ganancia += (calificacion * proyectoActual.getPaga())/10; // si pasó se le da un parte proporcional de la ganancia 
         modeloPartida.getJugador().setDinero(modeloPartida.getJugador().getDinero() + ganancia);
-        evaluacion +="\nCalificación final: "+ calificacion + "\n";
-        evaluacion += "\nTu balance de este proyecto es: $" + ganancia + " pesos";
+        evaluacion +="\nCalificación final : "+ calificacion + "\n";
+        evaluacion += "\nReseña del cliente: ''" + modeloPartida.getReseñas().get(calificacion) + "''";
+        evaluacion += "\n \n Tu balance de este proyecto es: $" + ganancia + " pesos";
         // Avanzamos el calendario la cantidad de días que se tardó en implementar los patrones
         avanzaDias(tiempoPatrones());
         // Reiniciar listas
@@ -385,9 +386,6 @@ public class ControladorFeedback implements ObservadorPartida {
             if (l1.contains(elemento)) {
                 resultados[0]++;
                 ++resultados[3];
-                // Removemos la categoría para que no se cuente más de una vez
-                // el medio/entero punto (solo corresponde a una coincidencia)
-                categoriasElegidas.remove(categoriaElemento); 
             } else if (categoriasElegidas.contains(categoriaElemento)) {
                 // Removemos la categoría para que no se cuente más de una vez
                 // el medio/entero punto (solo corresponde a una coincidencia)

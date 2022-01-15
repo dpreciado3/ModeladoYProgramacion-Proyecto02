@@ -96,7 +96,7 @@ public class Proyecto {
         return nombreProyecto
                 + "\nCliente : " + nombreCliente
                 + "\nDescripción: " + descripcion
-                + "\nPago: " + paga + " pesos"
+                + "\nPago: $" + paga + " pesos"
                 + "\nFecha de entrega: " + formatoFecha.format(fechaDeEntrega);
     }
     
