@@ -21,11 +21,12 @@ public class Independiente extends Nivel{
         patronesDisponibles.add(new Strategy());
         patronesDisponibles.add(new Template());
         nombre = "Independiente";
-        maximo = 20000;
+        maximo = 100000;
+        costoOperativo = 100;
     }
     @Override
     public void cobrar(Empresa em) {
-        em.setDinero(em.getDinero()-10);
+        em.setDinero(em.getDinero()-costoOperativo);
     }
     
 }

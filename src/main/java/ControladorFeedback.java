@@ -1,4 +1,5 @@
-import java.util.HashMap;
+
+import java.util.Calendar;
 import java.util.Iterator;
 import java.util.LinkedList;
 import javax.swing.JOptionPane;
@@ -87,7 +88,15 @@ public class ControladorFeedback implements ObservadorPartida {
             //fin del juego
             case 3:
                 vistaFeedback.actualizaVista("Felicidades, oficialmente estas listo para desarrollar tu empresa"+ 
-                        "\n \n Presione 0 para reiniciar el juego");
+                        "\n \n Presione 0 para reiniciar el juego" +
+                        "\n \n"
+                        + "     ██▄▄▄▄▄▄▄▄▄   \n" +
+"    ▒▒▒▒▒▒▒▒▒▒▓██  \n" +
+"   ▀▀▒▒▒▀▀▒▒▒▓▓▓▓█ \n" +
+" ▄▄▄▒▒░    ░░▒▒▒▓█ \n" +
+" ▀▀▀▒▄▄▄   ░░▒▒▒▓█ \n" +
+"   █▄░   ░░▒▒▒▒▓▓█ \n" +
+"    ▀█▄▄▄▄▄▄▄▄▄▀▀  " );
                 siguiente = 0;
                 break;
             //perder el juego
@@ -147,6 +156,10 @@ public class ControladorFeedback implements ObservadorPartida {
     private void agregaPatrones(){
         switch (opcionUsuario) {
             case -1:
+                if (patronesElegidos.isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Tienes que escoger por lo menos un patrón", "Advertencia", JOptionPane.DEFAULT_OPTION);
+                    break;
+                }
                 siguiente = 6;
                 mensajes();
                 break;
@@ -157,7 +170,7 @@ public class ControladorFeedback implements ObservadorPartida {
                         patronesElegidos.add(propuesta);
                         agregadoPatrones[opcionUsuario-1] = true;
                     }else
-                        JOptionPane.showMessageDialog(null, "Ya habías agregado este patrón", "Titulo", JOptionPane.DEFAULT_OPTION);
+                        JOptionPane.showMessageDialog(null, "Ya habías agregado este patrón", "Advertencia", JOptionPane.DEFAULT_OPTION);
                 }
                 break;
         }
@@ -171,6 +184,10 @@ public class ControladorFeedback implements ObservadorPartida {
     private void agregaLenguajes(){
         switch (opcionUsuario) {
             case -1:
+                if (lenguajesElegidos.isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Tienes que escoger por lo menos un lenguaje", "Advertencia", JOptionPane.DEFAULT_OPTION);
+                    break;
+                }
                 siguiente = 7;
                 mensajes();
                 break;
@@ -181,7 +198,7 @@ public class ControladorFeedback implements ObservadorPartida {
                         lenguajesElegidos.add(propuesta);
                         agregadoLenguajes[opcionUsuario-1] = true;
                     }else
-                        JOptionPane.showMessageDialog(null, "Ya habías agregado este lenguaje", "Titulo", JOptionPane.DEFAULT_OPTION);
+                        JOptionPane.showMessageDialog(null, "Ya habías agregado este lenguaje", "Advertencia", JOptionPane.DEFAULT_OPTION);
                 }
                 break;
         }
@@ -194,7 +211,7 @@ public class ControladorFeedback implements ObservadorPartida {
     private <T> T validaEntrada(LinkedList<T> lista){
         int i=1;
         if(opcionUsuario> lista.size() || opcionUsuario<1)
-                JOptionPane.showMessageDialog(null, "La opción ingresada no existe", "Titulo", JOptionPane.DEFAULT_OPTION);
+                JOptionPane.showMessageDialog(null, "La opción ingresada no existe", "Advertencia", JOptionPane.DEFAULT_OPTION);
         else
             for(T t: lista){
                 if(i++ == opcionUsuario)
@@ -280,11 +297,11 @@ public class ControladorFeedback implements ObservadorPartida {
     private String evaluar() {
         for(Lenguaje l: lenguajesElegidos)
             System.out.println(l.getNombre());
-        String evaluacion = "\n"+proyectoActual.respuestaEsperada();
+        String evaluacion = "\n";
         int calificacion = 0;
         double porcentajePatrones = 5.0;
         double porcentajeLenguajes = 5.0;
-        int ganancia = -proyectoActual.obtenCostoLenguajes();// si no pasó se le descuenta el precio de los lenguajes
+        int ganancia = -costoLenguajes();// si no pasó se le descuenta el precio de los lenguajes
         
         // Si se pasó de la fecha de entrega, la calificación es 0
         if (modeloPartida.getCalendario().getTime().after(proyectoActual.getFechaDeEntrega())){
@@ -297,10 +314,13 @@ public class ControladorFeedback implements ObservadorPartida {
         puntajePorPatron = porcentajePatrones / ((double) proyectoActual.getPatronesRequeridos().size());
         double puntajePatrones;
         puntajePatrones = calificacionParcialPatrones[3]*puntajePorPatron;
+        // Calificación reprobatoria
+        if (puntajePatrones < 0)
+            puntajePatrones = 0;
         calificacion += (int) Math.round(puntajePatrones);
         evaluacion +="\nCalificación patrones: " + (int) Math.round(puntajePatrones);
         evaluacion +="\n    Patrones correctos: " + calificacionParcialPatrones[0];
-        evaluacion +="\n    Patrones parcialmente correctos (del mismo tipo): " + calificacionParcialPatrones[1]; 
+        evaluacion +="\n    Patrones parcialmente correctos: " + calificacionParcialPatrones[1]; 
         evaluacion +="\n    Patrones incorrectos: " + calificacionParcialPatrones[2];        
         // Puntaje de lenguajes
         double puntajePorLenguaje;
@@ -309,19 +329,24 @@ public class ControladorFeedback implements ObservadorPartida {
         int[] calificacionParcialLenguajes = cuentaLenguajesCorrectos(proyectoActual.getLenguajesRequeridos(),lenguajesElegidos);     
         double lenguajesCorrectos = (double)(calificacionParcialLenguajes[0]+calificacionParcialLenguajes[1]) ;
         puntajeLenguajes = lenguajesCorrectos*puntajePorLenguaje;
+        // Calificación reprobatoria
+        if (puntajeLenguajes < 0)
+            puntajeLenguajes = 0;
         calificacion += (int) Math.round(puntajeLenguajes);        
         evaluacion +="\nCalificación lenguajes: " + (int) Math.round(puntajeLenguajes);
         evaluacion +="\n    Lenguajes correctos: " + calificacionParcialLenguajes[0];
-        evaluacion +="\n    Lenguajes incorrectos: " + calificacionParcialLenguajes[1];
+        evaluacion +="\n    Lenguajes incorrectos: " + calificacionParcialLenguajes[1]*-1;
         if(calificacion > 5)
-            ganancia = (calificacion * proyectoActual.getPaga())/10; // si pasó se le da un parte proporcional de la ganancia 
-        
-            
+            ganancia += (calificacion * proyectoActual.getPaga())/10; // si pasó se le da un parte proporcional de la ganancia 
         modeloPartida.getJugador().setDinero(modeloPartida.getJugador().getDinero() + ganancia);
         evaluacion +="\nCalificación final: "+ calificacion + "\n";
-        evaluacion += "\nRecibe tu pago por adelantado de: " + ganancia + " pesos";
+        evaluacion += "\nTu balance de este proyecto es: $" + ganancia + " pesos";
+        // Avanzamos el calendario la cantidad de días que se tardó en implementar los patrones
+        avanzaDias(tiempoPatrones());
+        // Reiniciar listas
+        lenguajesElegidos.clear();
+        patronesElegidos.clear();
         return evaluacion;
-        //return calificacion;
     }
 
     /**
@@ -401,5 +426,24 @@ public class ControladorFeedback implements ObservadorPartida {
             }
         }
         return "";
+    }
+    
+    private int costoLenguajes(){
+        int costo = 0;
+        for(Lenguaje l: lenguajesElegidos)
+            costo += l.getPrecio();
+        return costo;
+    }
+    
+    private int tiempoPatrones(){
+        int dias = 0;
+        for(Patron p: patronesElegidos)
+            dias += p.getTiempoNecesario();
+        return dias;
+    }
+    
+    private void avanzaDias(int dias) {
+        modeloPartida.getCalendario().add(Calendar.DATE, dias);
+        modeloPartida.getJugador().setDinero(modeloPartida.getJugador().getDinero() - modeloPartida.getNivelActual().getCostoOperativo()*dias);
     }
 }

@@ -43,11 +43,13 @@ public class Coorporativo  extends Nivel{
         patronesDisponibles.add(new AbstractFactory());
         patronesDisponibles.add(new Factory());
         nombre = "Corporativo";
+        maximo = 3500000;
+        costoOperativo = 10000;
     }
     
     @Override
     public void cobrar(Empresa em) {
-        em.setDinero(em.getDinero()-30);
+        em.setDinero(em.getDinero()- costoOperativo);
     }
     
 }

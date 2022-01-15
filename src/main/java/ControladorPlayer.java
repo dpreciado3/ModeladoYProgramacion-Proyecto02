@@ -44,7 +44,7 @@ public class ControladorPlayer{
                             feedback.setSiguiente(0);
                         feedback.mensajes();
                     } catch (NumberFormatException ex) {
-                        JOptionPane.showMessageDialog(null, "Por favor ingrese un número", "Titulo", JOptionPane.DEFAULT_OPTION);
+                        JOptionPane.showMessageDialog(null, "Por favor ingrese un número", "Advertencia", JOptionPane.DEFAULT_OPTION);
                     }            
                     vistaPlayer.limpiar();
                 }

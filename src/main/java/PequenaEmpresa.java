@@ -34,10 +34,12 @@ public class PequenaEmpresa  extends Nivel{
         patronesDisponibles.add(new Builder());
         patronesDisponibles.add(new Prototype());
         nombre = "Pequeña empresa";
+        maximo = 200000;
+        costoOperativo = 1000;
     }
     @Override
     public void cobrar(Empresa em) {
-        em.setDinero(em.getDinero()-20);
+        em.setDinero(em.getDinero()-costoOperativo);
     }
     
 }

@@ -1,10 +1,7 @@
 /**
  * Clase que representa los lenguajes para los proyectos.
  */
-/**
- * Clase que representa los lenguajes para los proyectos, 
- */
-public class Lenguaje{
+public abstract class Lenguaje{
         
     protected String nombre;
     protected int precio;

@@ -14,6 +14,7 @@ public abstract class Nivel {
     protected LinkedList<Lenguaje> lenguajesDisponibles;
     protected String nombre;
     protected int maximo;
+    protected int costoOperativo;
 
     
     /**
@@ -62,6 +63,10 @@ public abstract class Nivel {
      */
     public String getNombre() {
         return this.nombre;
+    }
+
+    public int getCostoOperativo() {
+        return costoOperativo;
     }
     
     /**

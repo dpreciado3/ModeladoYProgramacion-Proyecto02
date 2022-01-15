@@ -19,7 +19,7 @@ public class ConstructorProyectos {
         proyectoI1.agregaDescripcion(" Maryo quiere empezar su vida como desarrollador de videojuegos, pero no sabe programar, y tampoco se le ocurre ninguna idea original para un juego. Por esto, te ha encargado “inspirarte” de una famosa franquicia de videojuegos familiares de carros, y con esto programar un videojuego titulado Maryo Cart. Maryo quiere que cada personaje tenga un comportamiento distinto en la pista (aceleración, velocidad, peso, etc.), así como poderes distintos.");
         proyectoI1.agregaLenguajesRequeridos(new CSharp());
         proyectoI1.agregaPaga(30000);
-        proyectoI1.agregaFechaDeEntrega(calculaEntrega(5));
+        proyectoI1.agregaFechaDeEntrega(calculaEntrega(100));
         return proyectoI1;
     }
     
@@ -40,7 +40,7 @@ public class ConstructorProyectos {
         proyectoPE1.agregaLenguajesRequeridos(new PHP());
         proyectoPE1.agregaLenguajesRequeridos(new Java());
         proyectoPE1.agregaPaga(200000);
-        proyectoPE1.agregaFechaDeEntrega(calculaEntrega(14));
+        proyectoPE1.agregaFechaDeEntrega(calculaEntrega(200));
         return proyectoPE1;
     }
     
@@ -66,8 +66,8 @@ public class ConstructorProyectos {
         proyectoC1.agregaLenguajesRequeridos(new Kotlin());
         proyectoC1.agregaLenguajesRequeridos(new Swift());
         proyectoC1.agregaLenguajesRequeridos(new JavaScript());
-        proyectoC1.agregaPaga(50000000);
-        proyectoC1.agregaFechaDeEntrega(calculaEntrega(54));
+        proyectoC1.agregaPaga(5000000);
+        proyectoC1.agregaFechaDeEntrega(calculaEntrega(300));
         return proyectoC1;
     }
     
